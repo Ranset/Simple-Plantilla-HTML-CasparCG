@@ -27,7 +27,7 @@
         }
     </style>
     
-<p id = "f0">NOMBRE</p>
+<p id = "f0">NAME</p>
 
 <div id = "box"></div>
 
@@ -75,7 +75,7 @@ var dataCaspar = {};
 
 // Replace characters that could become a problem if left as is
 function escapeHtml(unsafe) {
-   return unsafe.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
+   return unsafe.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, "&quot;").replace(/'/g, "'");
 }
 
 // Main function to insert data
