@@ -1,109 +1,141 @@
 <html>
+
 <body>
-    
+
     <style type="text/css" media="all">
         #box {
             margin-left: -160px;
-          background-color:green;
-          height:35px;
-          width:150px;
-          position: absolute;
-          z-index: 1;
+            background-color: green;
+            height: 35px;
+            width: 150px;
+            position: absolute;
+            z-index: 1;
         }
 
         #f0 {
-          margin-left:-140px;
-          margin-top: 1px;
-          font-weight: bold;
-          font-family: Arial;
-          font-size: 25px;
-          color: white;
-          position: absolute;
-          z-index: 2;
+            margin-left: -140px;
+            margin-top: 1px;
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            z-index: 2;
         }
 
-        button {
-            margin-top: 5%;
+        .Controls {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        #updtpBtn {
+            margin-left: 2ex;
+        }
+
+        input {
+            margin-top: 1ex;
+            width: 250px;
         }
     </style>
-    
-<p id = "f0">NAME</p>
 
-<div id = "box"></div>
+    <!-- Remember put the  style="visibility: hidden;" to hide the controls-->
+    <div class="Controls" style="visibility: visible;">
+        <button id="playBtn">PLAY</button>
+        <button id="nextBtn">NEXT</button>
+        <button id="stopBtn">STOP</button>
+        <button id="updtpBtn">UPDATE</button>
+        <br>
+        <input id="input">
+    </div>
 
-<!--
-<button id="playBtn">PLAY</button>
-<button id="stopBtn">STOP</button>
--->
+    <p id="f0">NAME</p>
 
-<!--****************** ANIMATION **********************************-->
+    <div id="box"></div>
 
-<script src="./gsap.min.js"></script>
+    <!--****************** ANIMATION **********************************-->
 
-<script>
-    //gsap.from("#box", {x: -150, duration: 1});
-    //gsap.from("#f0t", {x: -150, duration: 1, delay: 0.2});
-    
-    var tl = gsap.timeline({paused: true});
-    
-    tl.to("#box", {x: 160, duration: 1})
-      .to("#f0", {x: 150, duration: 1}, 0.2);
-      
+    <script src="./gsap.min.js"></script>
+
+    <script>
+        //gsap.from("#box", {x: -150, duration: 1});
+        //gsap.from("#f0t", {x: -150, duration: 1, delay: 0.2});
+
+        var tl = gsap.timeline({
+            paused: true
+        });
+
+        tl.to("#box", {
+                x: 160,
+                duration: 1
+            })
+            .to("#f0", {
+                x: 150,
+                duration: 1
+            }, 0.2);
 
 
-    function PlayTl () {
-        
-    }
 
-    function Out (){
-        
-        
-    }
-/*
-    document.getElementById('playBtn').addEventListener("click", PlayTl);
-    document.getElementById('stopBtn').addEventListener("click", Out);
-*/
-</script>
+        function PlayAnim() {
 
-<!--************** CasparCG Data sent in JSON **************************-->
-<script>
-/* Structure of data sent from CasparCG:
-    {"#idCaspar":"#valCaspar#"}
-*/
-// Global variable for data from CasparCG
-var dataCaspar = {};
+            dataInsert({
+                "f0": "Mi nombre"
+            });
+            play();
+        }
 
-// Replace characters that could become a problem if left as is
-function escapeHtml(unsafe) {
-   return unsafe.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, "&quot;").replace(/'/g, "'");
-}
+        function StopAnim() {
 
-// Main function to insert data
-function dataInsert(dataCaspar)   {
-   for (var idCaspar in dataCaspar) {
-      var idTemplate = document.getElementById(idCaspar);
-      if (idTemplate != undefined)   { idTemplate.innerHTML = escapeHtml(dataCaspar[idCaspar]); }
-   }
-}
+            stop();
+        }
 
-// Call for a update of data from CasparCG client
-function update(str) {
-   dataCaspar = JSON.parse(str || "null");
-   dataInsert(dataCaspar);   // Insert data
-}
+        document.getElementById('playBtn').addEventListener("click", PlayAnim);
+        document.getElementById('stopBtn').addEventListener("click", StopAnim);
+    </script>
 
-function play() { 
+    <!--************** CasparCG Data sent in JSON **************************-->
+    <script>
+        /* Structure of data sent from CasparCG:
+                    {"#idCaspar":"#valCaspar#"}
+                */
+        // Global variable for data from CasparCG
+        var dataCaspar = {};
 
-    tl.tweenTo(2);	
+        // Replace characters that could become a problem if left as is
+        function escapeHtml(unsafe) {
+            return unsafe.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, "&quot;").replace(/'/g,
+                "'");
+        }
 
-}
-function stop() { 
+        // Main function to insert data
+        function dataInsert(dataCaspar) {
+            for (var idCaspar in dataCaspar) {
+                var idTemplate = document.getElementById(idCaspar);
+                if (idTemplate != undefined) {
+                    idTemplate.innerHTML = escapeHtml(dataCaspar[idCaspar]);
+                }
+            }
+        }
 
-    tl.reverse();
-    tl.resume();
+        // Call for a update of data from CasparCG client
+        function update(str) {
+            dataCaspar = JSON.parse(str || "null");
+            dataInsert(dataCaspar); // Insert data
+        }
 
-}
-</script>
+        function play() {
+
+            tl.tweenTo(2);
+
+        }
+
+        function stop() {
+
+            tl.reverse();
+            tl.resume();
+
+        }
+    </script>
 
 </body>
+
 </html>
