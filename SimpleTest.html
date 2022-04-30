@@ -2,41 +2,7 @@
 
 <body>
 
-    <style type="text/css" media="all">
-        #box {
-            margin-left: -160px;
-            background-color: green;
-            height: 35px;
-            width: 150px;
-            position: absolute;
-            z-index: 1;
-        }
-
-        #f0 {
-            margin-left: -140px;
-            margin-top: 1px;
-            font-weight: bold;
-            font-family: Arial;
-            font-size: 25px;
-            color: white;
-            position: absolute;
-            z-index: 2;
-        }
-
-        .Controls {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-
-        #updtpBtn {
-            margin-left: 2ex;
-        }
-
-        input {
-            margin-top: 1ex;
-            width: 250px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Remember put the  style="visibility: hidden;" to hide the controls-->
     <div class="Controls" style="visibility: visible;">
@@ -48,93 +14,22 @@
         <input id="input">
     </div>
 
+    <!-- YOUR HTML CODE -->
+
     <p id="f0">NAME</p>
 
     <div id="box"></div>
 
-    <!--****************** ANIMATION **********************************-->
+    <!-- END HTML CODE -->
 
-    <script src="./gsap.min.js"></script>
+    <!-- Don't change the js files order -->
+    <script src="./js/gsap.min.js"></script>
 
-    <script>
-        //gsap.from("#box", {x: -150, duration: 1});
-        //gsap.from("#f0t", {x: -150, duration: 1, delay: 0.2});
+    <script src="./js/animation.js"></script>
 
-        var tl = gsap.timeline({
-            paused: true
-        });
+    <script src="./js/CasparCG_JSON.js"></script>
 
-        tl.to("#box", {
-                x: 160,
-                duration: 1
-            })
-            .to("#f0", {
-                x: 150,
-                duration: 1
-            }, 0.2);
-
-
-
-        function PlayAnim() {
-
-            dataInsert({
-                "f0": "Mi nombre"
-            });
-            play();
-        }
-
-        function StopAnim() {
-
-            stop();
-        }
-
-        document.getElementById('playBtn').addEventListener("click", PlayAnim);
-        document.getElementById('stopBtn').addEventListener("click", StopAnim);
-    </script>
-
-    <!--************** CasparCG Data sent in JSON **************************-->
-    <script>
-        /* Structure of data sent from CasparCG:
-                    {"#idCaspar":"#valCaspar#"}
-                */
-        // Global variable for data from CasparCG
-        var dataCaspar = {};
-
-        // Replace characters that could become a problem if left as is
-        function escapeHtml(unsafe) {
-            return unsafe.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, "&quot;").replace(/'/g,
-                "'");
-        }
-
-        // Main function to insert data
-        function dataInsert(dataCaspar) {
-            for (var idCaspar in dataCaspar) {
-                var idTemplate = document.getElementById(idCaspar);
-                if (idTemplate != undefined) {
-                    idTemplate.innerHTML = escapeHtml(dataCaspar[idCaspar]);
-                }
-            }
-        }
-
-        // Call for a update of data from CasparCG client
-        function update(str) {
-            dataCaspar = JSON.parse(str || "null");
-            dataInsert(dataCaspar); // Insert data
-        }
-
-        function play() {
-
-            tl.tweenTo(2);
-
-        }
-
-        function stop() {
-
-            tl.reverse();
-            tl.resume();
-
-        }
-    </script>
+    <script src="./js/Controls.js"></script>
 
 </body>
 

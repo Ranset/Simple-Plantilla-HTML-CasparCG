@@ -1,0 +1,33 @@
+#box {
+    margin-left: -160px;
+    background-color: green;
+    height: 35px;
+    width: 150px;
+    position: absolute;
+    z-index: 1;
+}
+
+#f0 {
+    margin-left: -140px;
+    margin-top: 1px;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 25px;
+    color: white;
+    position: absolute;
+    z-index: 2;
+}
+
+.Controls {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#updtpBtn {
+    margin-left: 2ex;
+}
+
+input {
+    margin-top: 1ex;
+    width: 250px;
+}
