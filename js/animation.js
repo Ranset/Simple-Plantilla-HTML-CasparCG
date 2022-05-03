@@ -14,13 +14,12 @@ tl.to("#box", {
         duration: 1
     }, 0.2);
 
-
+    
 
 function PlayAnim() {
 
-    dataInsert({
-        "f0": "Mi nombre"
-    });
+    var text = document.getElementById('data').value;
+    update(text);
     play();
 }
 
@@ -29,5 +28,14 @@ function StopAnim() {
     stop();
 }
 
+function UpdtAnim(){
+    var text = document.getElementById("data").value;
+    console.log(text);
+    update(text);
+}
+
 document.getElementById('playBtn').addEventListener("click", PlayAnim);
 document.getElementById('stopBtn').addEventListener("click", StopAnim);
+document.getElementById('updtpBtn').addEventListener("click", UpdtAnim);
+
+
