@@ -25,3 +25,32 @@ function update(str) {
     dataCaspar = JSON.parse(str || "null");
     dataInsert(dataCaspar); // Insert data
 }
+
+
+/************** PREVIEW HTML CONTROLS  ******************/
+function PlayAnim() {
+
+    var text = document.getElementById('data').value;
+    update(text);
+    play();
+}
+
+function StopAnim() {
+
+    stop();
+}
+
+function UpdtAnim(){
+    var text = document.getElementById("data").value;
+    console.log(text);
+    update(text);
+}
+
+function NextAnim(){
+    next();
+}
+
+document.getElementById('playBtn').addEventListener("click", PlayAnim);
+document.getElementById('stopBtn').addEventListener("click", StopAnim);
+document.getElementById('updtpBtn').addEventListener("click", UpdtAnim);
+document.getElementById('nextBtn').addEventListener("click", NextAnim);

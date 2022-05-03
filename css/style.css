@@ -21,13 +21,24 @@
 .Controls {
     margin-top: 5px;
     margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    width: 360px;
+    font-family: arial;
+    border-radius: 12px;
 }
 
 #updtpBtn {
     margin-left: 2ex;
 }
 
-input {
+.Controls input {
     margin-top: 1ex;
-    width: 250px;
+    width: 350px;
+}
+
+.Controls span {
+    margin-left: 130px;
+    cursor: pointer;
+    color: white;
 }
