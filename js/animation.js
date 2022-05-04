@@ -13,21 +13,3 @@ tl.to("#box", {
         x: 150,
         duration: 1
     }, 0.2);
-
-
-
-function PlayAnim() {
-
-    dataInsert({
-        "f0": "Mi nombre"
-    });
-    play();
-}
-
-function StopAnim() {
-
-    stop();
-}
-
-document.getElementById('playBtn').addEventListener("click", PlayAnim);
-document.getElementById('stopBtn').addEventListener("click", StopAnim);

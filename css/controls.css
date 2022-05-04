@@ -1,0 +1,30 @@
+/* DON'T MODIFY THIS FILE */
+#mydiv {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    width: 360px;
+    font-family: arial;
+    border-radius: 12px;
+    position: absolute;
+    z-index: 39;
+}
+
+#updtpBtn {
+    margin-left: 2ex;
+}
+
+#mydiv input {
+    margin-top: 1ex;
+    width: 350px;
+}
+
+#mydivheader {
+    margin-left: 80px;
+    cursor: move;
+    color: white;
+    z-index: 40;
+}
+
+#mydiv p {
+    color: white;
+}

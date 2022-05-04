@@ -4,6 +4,12 @@ function play() {
 
 }
 
+function next() {
+
+    //..add your code
+
+}
+
 function stop() {
 
     tl.reverse();

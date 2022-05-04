@@ -17,17 +17,3 @@
     position: absolute;
     z-index: 2;
 }
-
-.Controls {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-#updtpBtn {
-    margin-left: 2ex;
-}
-
-input {
-    margin-top: 1ex;
-    width: 250px;
-}
